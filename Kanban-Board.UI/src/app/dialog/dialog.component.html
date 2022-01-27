@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Add WorkItem</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="workItemForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input formControlName="title" matInput placeholder="">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <input formControlName="description" matInput placeholder="">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>User</mat-label>
+    <mat-select formControlName="userId" placeholder="Status">
+      <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="statusId" placeholder="Status">
+      <mat-option *ngFor="let status of statuses" [value]="status.id">{{status.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+  <div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      <button style="margin-left: 8px;" mat-raised-button color="primary" mat-dialog-close (click)="actionWorkItem()">Save</button>
+  </div>
+</div>
